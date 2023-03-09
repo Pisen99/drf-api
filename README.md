@@ -1,7 +1,7 @@
 Installing Django:
 * In terminal
 - pip3 install 'django<4'
-- django-admin startproject projectName .
+- django-admin startproject <projectName> .
 
 
 Installing Cloudinary:
