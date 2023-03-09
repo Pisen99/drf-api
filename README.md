@@ -97,3 +97,31 @@ Obs! leave an empty row before adding <projectname> to 'INSTALLED_APPS'.
 - then migrate
 - pip3 install 'dj-rest-auth[with_social]'
 - pip3 install djangorestframework-simplejwt
+- migrate
+- pip3 freeze > requirements.txt (Since a new library has been installed)
+
+
+* In the terminal: install dj_database_url and psycopg2, both of these are needed to connect to your external database
+- pip3 install dj_database_url==0.5.0 psycopg2
+
+
+* In your settings.py file, import dj_database_url underneath the import for os
+- import os
+ import dj_database_url
+
+- Update the DATABASES section to the following,
+ if 'DEV' in os.environ:
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.sqlite3',
+             'NAME': BASE_DIR / 'db.sqlite3',
+         }
+     }
+ else:
+     DATABASES = {
+         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+     }
+- In your env.py file, add a new environment variable to Gitpod with the key set to DATABASE_URL, and the value to your ElephantSQL database URL,
+os.environ.setdefault("DATABASE_URL", "<your PostgreSQL URL here>")
+- python3 manage.py makemigrations --dry-run
+- migrate
