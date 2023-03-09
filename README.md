@@ -79,4 +79,15 @@ Obs! leave an empty row before adding <projectname> to 'INSTALLED_APPS'.
 
 * In browser:
 - Go to '/admin' and log in.
-- 
+
+
+* in terminal filter library:
+- pip3 install django-filter
+- pip3 freeze > requirements.txt (Since a new library has been installed)
+
+* in settings.py (drf_api)
+- add 'django_filters', under 'rest_framework'.
+
+* in posts/views.py
+- On row 3 add, 'from django_filters.rest_framework import DjangoFilterBackend'.
+- Inside filter_backends add, DjangoFilterBackend
