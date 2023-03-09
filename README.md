@@ -91,3 +91,9 @@ Obs! leave an empty row before adding <projectname> to 'INSTALLED_APPS'.
 * in posts/views.py
 - On row 3 add, 'from django_filters.rest_framework import DjangoFilterBackend'.
 - Inside filter_backends add, DjangoFilterBackend
+
+* in terminal:
+- pip3 install dj-rest-auth==2.1.9
+- then migrate
+- pip3 install 'dj-rest-auth[with_social]'
+- pip3 install djangorestframework-simplejwt
